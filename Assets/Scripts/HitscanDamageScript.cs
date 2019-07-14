@@ -29,7 +29,6 @@ public class HitscanDamageScript : MonoBehaviour
                 if (targetDistance <= allowedRange)
                 {
                     shot.transform.SendMessage("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);
-                    Debug.Log("Hit for " + damageAmount.ToString());
                 }
             }
         }
