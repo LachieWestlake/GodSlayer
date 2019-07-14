@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth;
     private int currentHealth;
 
     // delegate avoids null check so no exception will be thrown

@@ -5,10 +5,11 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class HitscanDamageScript : MonoBehaviour
 {
-    public int damageAmount = 1;
+    public int damageAmount;
     public float targetDistance;
-    public float allowedRange = 15;
+    public float allowedRange;
     public LayerMask toIgnore;
+    public GameObject impactPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,8 @@ public class HitscanDamageScript : MonoBehaviour
             {
                 Debug.Log(shot.collider);
                 targetDistance = shot.distance;
+
+                Instantiate(impactPoint, shot.point, Quaternion.identity);
 
                 shot.transform.SendMessage("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);
             }
