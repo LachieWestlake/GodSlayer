@@ -8,6 +8,7 @@ public class HitscanDamageScript : MonoBehaviour
     public int damageAmount = 1;
     public float targetDistance;
     public float allowedRange = 15;
+    public LayerMask toIgnore;
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +23,12 @@ public class HitscanDamageScript : MonoBehaviour
         {
             RaycastHit shot;
 
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out shot))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out shot, allowedRange, ~toIgnore))
             {
+                Debug.Log(shot.collider);
                 targetDistance = shot.distance;
 
-                if (targetDistance <= allowedRange)
-                {
-                    shot.transform.SendMessage("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);
-                }
+                shot.transform.SendMessage("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);
             }
         }
     }
