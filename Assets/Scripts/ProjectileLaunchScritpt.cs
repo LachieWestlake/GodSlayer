@@ -5,7 +5,6 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class ProjectileLaunchScritpt : MonoBehaviour
 {
-    public int damageAmount;
     public float speed;
     public GameObject projectile;
 
@@ -20,7 +19,7 @@ public class ProjectileLaunchScritpt : MonoBehaviour
     {
         if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
-            Debug.Log(transform.position);
+            // launches the projectile in the direction the player is aiming
             Rigidbody p = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody>();
             p.velocity = transform.forward * speed;
         }

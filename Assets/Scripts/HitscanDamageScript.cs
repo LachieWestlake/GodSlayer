@@ -31,7 +31,7 @@ public class HitscanDamageScript : MonoBehaviour
 
                 Instantiate(impactPoint, shot.point, Quaternion.identity);
 
-                shot.transform.SendMessage("DeductPoints", damageAmount, SendMessageOptions.DontRequireReceiver);
+                shot.transform.SendMessage("DeductHealth", damageAmount, SendMessageOptions.DontRequireReceiver);
             }
         }
     }

@@ -11,7 +11,7 @@ public class EnemyScript : MonoBehaviour
     // delegate avoids null check so no exception will be thrown
     public event Action<float> UpdateHealthBar = delegate { };
 
-    private void DeductPoints(int damageAmount)
+    private void DeductHealth(int damageAmount)
     {
         // updates current health
         currentHealth -= damageAmount;
